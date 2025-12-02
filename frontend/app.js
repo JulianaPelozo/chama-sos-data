@@ -1,4 +1,3 @@
-// script.js - Lógica principal do frontend
 const API_BASE_URL = 'http://localhost:5000/api';
 
 // Elementos do DOM
@@ -14,22 +13,79 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     loadDashboardData();
 });
-
 // ===== INICIALIZAÇÃO =====
 function initializeApp() {
-    // Verificar conexão com o backend
+    // Mostrar que estamos conectando
+    updateConnectionStatus('connecting');
+    
+    // Tentar conectar ao backend
     checkBackendConnection();
     
-    // Esconder loading screen após 2 segundos
+    // Forçar esconder loading após 3 segundos (mesmo se falhar)
     setTimeout(() => {
-        document.getElementById('loading-screen').style.opacity = '0';
-        setTimeout(() => {
-            document.getElementById('loading-screen').style.display = 'none';
-        }, 300);
-    }, 2000);
+        hideLoadingScreen();
+        // Se ainda não conseguiu conectar, mostrar aviso
+        const statusDot = document.querySelector('.status-dot');
+        if (!statusDot.classList.contains('connected')) {
+            updateConnectionStatus(false);
+            showWarning('Backend não está respondendo. Algumas funcionalidades podem não estar disponíveis.');
+        }
+    }, 3000);
     
     // Ativar seção inicial
     activateSection('dashboard');
+}
+
+// ===== FUNÇÕES AUXILIARES =====
+function hideLoadingScreen() {
+    const loadingScreen = document.getElementById('loading-screen');
+    loadingScreen.style.opacity = '0';
+    loadingScreen.style.transition = 'opacity 0.5s ease';
+    
+    setTimeout(() => {
+        loadingScreen.style.display = 'none';
+    }, 500);
+}
+
+function updateConnectionStatus(status) {
+    const statusDot = document.querySelector('.status-dot');
+    const statusText = document.querySelector('.status-indicator span:last-child');
+    
+    if (status === 'connecting') {
+        statusDot.className = 'status-dot connecting';
+        statusText.textContent = 'Conectando...';
+    } else if (status === true) {
+        statusDot.className = 'status-dot connected';
+        statusText.textContent = 'Conectado';
+    } else {
+        statusDot.className = 'status-dot disconnected';
+        statusText.textContent = 'Desconectado';
+    }
+}
+
+function showWarning(message) {
+    // Criar notificação de aviso
+    const warningDiv = document.createElement('div');
+    warningDiv.className = 'warning-notification';
+    warningDiv.innerHTML = `
+        <div class="warning-content">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>${message}</span>
+            <button class="warning-close">&times;</button>
+        </div>
+    `;
+    
+    document.body.appendChild(warningDiv);
+    
+    // Remover após 10 segundos
+    setTimeout(() => {
+        warningDiv.remove();
+    }, 10000);
+    
+    // Botão para fechar
+    warningDiv.querySelector('.warning-close').addEventListener('click', () => {
+        warningDiv.remove();
+    });
 }
 
 // ===== EVENT LISTENERS =====

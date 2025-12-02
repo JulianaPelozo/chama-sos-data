@@ -1,4 +1,3 @@
-# app.py - Aplicação Flask principal para o dashboard
 
 import os
 import json
@@ -266,7 +265,6 @@ def interpret_prediction(prediction):
         }
 
 if __name__ == '__main__':
-    # Criar diretórios necessários
     os.makedirs('models', exist_ok=True)
     os.makedirs('templates', exist_ok=True)
     os.makedirs('static', exist_ok=True)
