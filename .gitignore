@@ -1,0 +1,226 @@
+# 🐍 PYTHON
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+*.manifest
+*.spec
+pip-log.txt
+pip-delete-this-directory.txt
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+.hypothesis/
+.pytest_cache/
+.python-version
+sitecustomize.py
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+
+# 📦 JUPYTER NOTEBOOKS
+.ipynb_checkpoints/
+*.ipynb
+*.ipynb_checkpoints
+
+# 🔐 ENVIRONMENT VARIABLES
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env.*.local
+
+# 🗄️ MONGODB
+/data/db/
+*.ns
+*.0
+*.1
+*.2
+mongod.lock
+WiredTiger
+WiredTigerLAS.wt
+WiredTiger.lock
+WiredTiger.turtle
+WiredTiger.wt
+collection*.wt
+index*.wt
+_mdb_catalog.wt
+_sizeStorer.wt
+storage.bson
+
+# 🤖 MACHINE LEARNING MODELS
+backend/models/*.pkl
+backend/models/*.joblib
+backend/models/*.h5
+backend/models/*.keras
+backend/models/*.pt
+backend/models/*.pth
+backend/models/checkpoints/
+!backend/models/README.md  # Mantém o README
+
+# 📊 DATA FILES (dados grandes/gerados)
+backend/data/*.json
+backend/data/*.csv
+backend/data/*.parquet
+backend/data/*.feather
+backend/data/*.hdf5
+backend/data/*.db
+backend/data/*.sqlite
+backend/data/sample/  # Exceto se for sample pequeno
+!backend/data/README.md
+
+# 📝 LOGS
+*.log
+logs/
+backend/logs/
+*.pid
+*.seed
+*.pid.lock
+
+# 🔧 IDE & EDITORES
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-workspace
+*.sublime-project
+*.komodoproject
+*.kpf
+
+# 🐳 DOCKER
+docker-compose.override.yml
+.dockerignore
+*.dockerfile
+
+# 📈 VISUALIZAÇÕES SALVAS
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.svg
+*.pdf
+*.eps
+*.psd
+
+# 🚀 DEPLOYMENT
+instance/
+.webassets-cache
+.scrapy
+docs/_build/
+
+# 📦 PACKAGING
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+*.war
+*.xpi
+*.deb
+*.rpm
+*.msi
+*.msm
+*.msp
+*.AppImage
+*.snap
+*.flatpak
+*.dmg
+*.exe
+
+# 🧪 TESTES
+.pytest_cache/
+.coverage
+htmlcov/
+.coverage.*
+.tox/
+test-reports/
+junit-*.xml
+cobertura.xml
+*.cover
+
+# 🎨 FRONTEND (se tiver)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.lock-wscript
+*.tsbuildinfo
+.next/
+out/
+.nuxt/
+dist/
+.cache/
+.parcel-cache/
+
+# 📱 SISTEMA OPERACIONAL
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# 📄 TEMPORARY FILES
+*.tmp
+*.temp
+*.cache
+*.bak
+*.backup
+*.sav
+*.old
+*~
+
+# 📊 EXCEL & OFFICE
+*.xlsx
+*.xls
+*.doc
+*.docx
+*.ppt
+*.pptx
+~$*.xlsx
+~$*.docx
+~$*.pptx
+
+# 🎯 ESPECÍFICO PARA SEU PROJETO CHAMA SOS
+# Mantém apenas arquivos de configuração exemplo
+!backend/data/example_data.json
+!backend/models/example_model.pkl
+
+# Arquivos que DEVEM ser versionados
+!backend/models/__init__.py
+!backend/data/__init__.py
+!backend/logs/__init__.py
