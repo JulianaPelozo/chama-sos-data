@@ -10,7 +10,6 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 </head>
 <body>
-    <!-- Navbar -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-brand">
@@ -43,7 +42,6 @@
         </div>
     </nav>
 
-    <!-- Loading Screen -->
     <div id="loading-screen" class="loading-screen">
         <div class="loading-content">
             <div class="loading-spinner"></div>
@@ -51,21 +49,16 @@
         </div>
     </div>
 
-    <!-- Main Content -->
     <main class="container">
-        <!-- Dashboard Section -->
         <section id="dashboard" class="section active">
             <div class="section-header">
                 <h1><i class="fas fa-dashboard"></i> Dashboard de Ocorrências</h1>
                 <p>Monitoramento em tempo real das ocorrências dos bombeiros</p>
             </div>
 
-            <!-- Stats Cards -->
             <div class="stats-grid" id="stats-cards">
-                <!-- Stats serão carregados via JavaScript -->
             </div>
 
-            <!-- Charts Row -->
             <div class="charts-row">
                 <div class="chart-card">
                     <div class="chart-header">
@@ -88,7 +81,6 @@
                 </div>
             </div>
 
-            <!-- Response Time Analysis -->
             <div class="chart-card full-width">
                 <div class="chart-header">
                     <h3><i class="fas fa-clock"></i> Análise de Tempo de Resposta</h3>
@@ -103,7 +95,6 @@
             </div>
         </section>
 
-        <!-- Prediction Section -->
         <section id="prediction" class="section">
             <div class="section-header">
                 <h1><i class="fas fa-bolt"></i> Predição de Tempo de Resposta</h1>
@@ -223,7 +214,6 @@
                     </div>
                 </div>
 
-                <!-- Model Info Sidebar -->
                 <div class="sidebar-card">
                     <div class="sidebar-header">
                         <h3><i class="fas fa-robot"></i> Informações do Modelo</h3>
@@ -260,14 +250,12 @@
 
                         <div class="feature-importance" id="feature-importance">
                             <h4>Importância das Variáveis:</h4>
-                            <!-- Features serão carregadas via JavaScript -->
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Occurrences Section -->
         <section id="occurrences" class="section">
             <div class="section-header">
                 <h1><i class="fas fa-list"></i> Registro de Ocorrências</h1>
@@ -275,7 +263,6 @@
             </div>
 
             <div class="occurrences-container">
-                <!-- Add New Occurrence Card -->
                 <div class="card">
                     <div class="card-header">
                         <h3><i class="fas fa-plus-circle"></i> Nova Ocorrência Real</h3>
