@@ -16,7 +16,7 @@ collection = init_mongodb()
 
 def clear_existing_data():
     if collection.count_documents({}) > 0:
-        print(f"⚠️  Removendo {collection.count_documents({})} registros existentes...")
+        print(f"Removendo {collection.count_documents({})} registros existentes...")
         collection.delete_many({})
         return True
     return False
