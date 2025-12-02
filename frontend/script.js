@@ -1,5 +1,26 @@
 const API_BASE_URL = 'http://localhost:5000/api';
 
+window.addEventListener('load', function() {
+    // Forçar remoção do loading após 2 segundos
+    setTimeout(function() {
+        const loading = document.getElementById('loading-screen');
+        if (loading) {
+            loading.style.transition = 'opacity 0.5s';
+            loading.style.opacity = '0';
+            setTimeout(() => loading.style.display = 'none', 500);
+        }
+        
+        // Mostrar aviso se não detectar backend
+        fetch('http://localhost:5000/api/dashboard-stats')
+            .catch(() => {
+                alert('Backend não encontrado em localhost:5000\n\n' +
+                      '1. Verifique se o Flask está rodando\n' +
+                      '2. Execute: python backend/app.py\n' +
+                      '3. Recarregue esta página');
+            });
+    }, 2000);
+});
+
 // Elementos do DOM
 let currentSection = 'dashboard';
 let occurrencesData = [];
