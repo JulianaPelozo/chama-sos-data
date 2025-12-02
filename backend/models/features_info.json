@@ -1,0 +1,11 @@
+{
+  "feature_names": [
+    "Grupo de Ocorr\u00eancia",
+    "Tipo de Ocorr\u00eancia",
+    "Prioridade",
+    "N\u00famero de V\u00edtimas",
+    "Danos Estimados (R$)"
+  ],
+  "n_features": 5,
+  "target_variable": "Tempo de Resposta (minutos)"
+}
