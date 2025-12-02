@@ -1,4 +1,3 @@
-# backend/data_generator.py - VERSÃO CORRIGIDA
 import os
 import json
 import pandas as pd
