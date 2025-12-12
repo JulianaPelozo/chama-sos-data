@@ -1,7 +1,6 @@
 const API_BASE_URL = 'http://localhost:5000/api';
 
 window.addEventListener('load', function() {
-    // Forçar remoção do loading após 2 segundos
     setTimeout(function() {
         const loading = document.getElementById('loading-screen');
         if (loading) {
@@ -10,7 +9,6 @@ window.addEventListener('load', function() {
             setTimeout(() => loading.style.display = 'none', 500);
         }
         
-        // Mostrar aviso se não detectar backend
         fetch('http://localhost:5000/api/dashboard-stats')
             .catch(() => {
                 alert('Backend não encontrado em localhost:5000\n\n' +
@@ -34,18 +32,13 @@ document.addEventListener('DOMContentLoaded', function() {
     setupEventListeners();
     loadDashboardData();
 });
-// ===== INICIALIZAÇÃO =====
 function initializeApp() {
-    // Mostrar que estamos conectando
     updateConnectionStatus('connecting');
     
-    // Tentar conectar ao backend
     checkBackendConnection();
     
-    // Forçar esconder loading após 3 segundos (mesmo se falhar)
     setTimeout(() => {
         hideLoadingScreen();
-        // Se ainda não conseguiu conectar, mostrar aviso
         const statusDot = document.querySelector('.status-dot');
         if (!statusDot.classList.contains('connected')) {
             updateConnectionStatus(false);
@@ -120,10 +113,8 @@ function setupEventListeners() {
         });
     });
     
-    // Botão de atualizar
     document.getElementById('refresh-btn').addEventListener('click', refreshAllData);
     
-    // Filtros de tempo
     document.querySelectorAll('.time-filter').forEach(btn => {
         btn.addEventListener('click', function() {
             document.querySelectorAll('.time-filter').forEach(b => b.classList.remove('active'));
@@ -132,33 +123,26 @@ function setupEventListeners() {
         });
     });
     
-    // Formulário de predição
     document.getElementById('prediction-form').addEventListener('submit', handlePredictionSubmit);
     document.getElementById('clear-form').addEventListener('click', clearPredictionForm);
     document.getElementById('close-result').addEventListener('click', closePredictionResult);
     document.getElementById('save-prediction').addEventListener('click', savePredictionAsOccurrence);
     document.getElementById('new-prediction').addEventListener('click', clearPredictionForm);
     
-    // Controles do modelo
     document.getElementById('retrain-model').addEventListener('click', retrainModel);
     document.getElementById('view-features').addEventListener('click', showFeatureDetails);
     
-    // Formulário de nova ocorrência
     document.getElementById('new-occurrence-form').addEventListener('submit', handleNewOccurrenceSubmit);
     
-    // Controles da tabela
     document.getElementById('search-occurrences').addEventListener('input', handleSearch);
     document.getElementById('rows-per-page').addEventListener('change', handleRowsPerPageChange);
     document.getElementById('prev-page').addEventListener('click', goToPrevPage);
     document.getElementById('next-page').addEventListener('click', goToNextPage);
     
-    // Filtro de métrica de série temporal
     document.getElementById('time-series-metric').addEventListener('change', updateTimeSeriesChart);
 }
 
-// ===== NAVEGAÇÃO =====
 function activateSection(sectionId) {
-    // Atualizar navegação
     document.querySelectorAll('.nav-link').forEach(link => {
         link.classList.remove('active');
         if (link.getAttribute('href') === `#${sectionId}`) {
@@ -166,7 +150,6 @@ function activateSection(sectionId) {
         }
     });
     
-    // Mostrar seção ativa
     document.querySelectorAll('.section').forEach(section => {
         section.classList.remove('active');
         if (section.id === sectionId) {
@@ -176,7 +159,6 @@ function activateSection(sectionId) {
     
     currentSection = sectionId;
     
-    // Carregar dados específicos da seção
     switch(sectionId) {
         case 'dashboard':
             loadDashboardData();
@@ -194,7 +176,6 @@ function activateSection(sectionId) {
     }
 }
 
-// ===== CONEXÃO COM BACKEND =====
 function checkBackendConnection() {
     fetch(`${API_BASE_URL}/dashboard-stats`)
         .then(response => {
@@ -223,9 +204,7 @@ function updateConnectionStatus(connected) {
     }
 }
 
-// ===== DASHBOARD =====
 function loadDashboardData() {
-    // Carregar estatísticas
     fetch(`${API_BASE_URL}/dashboard-stats`)
         .then(response => response.json())
         .then(data => {
@@ -371,7 +350,6 @@ function updatePriorityChart(priorityData) {
 }
 
 function updateResponseTimeChart(period) {
-    // Dados de exemplo (em produção viriam do backend)
     const sampleData = {
         hour: [15, 18, 12, 20, 16, 14, 22],
         day: [18, 22, 16, 20, 24, 18, 16],
@@ -439,7 +417,6 @@ function updateResponseTimeChart(period) {
     Plotly.newPlot('response-time-chart', [trace, averageTrace], layout);
 }
 
-// ===== PREDIÇÃO =====
 function loadModelInfo() {
     fetch(`${API_BASE_URL}/model-info`)
         .then(response => response.json())
@@ -550,10 +527,8 @@ function showPredictionResult(prediction, interpretation, formData) {
     const predictionClass = document.getElementById('prediction-class');
     const detailsDiv = document.getElementById('occurrence-details');
     
-    // Atualizar valores
     predictedTime.textContent = prediction.toFixed(1);
     
-    // Classificação
     let classificationHTML = '';
     let colorClass = '';
     
@@ -571,7 +546,6 @@ function showPredictionResult(prediction, interpretation, formData) {
     predictionClass.innerHTML = classificationHTML;
     predictionClass.className = `prediction-classification ${colorClass}`;
     
-    // Detalhes
     detailsDiv.innerHTML = `
         <div class="detail-item">
             <span class="detail-label">Grupo:</span>
@@ -599,7 +573,6 @@ function showPredictionResult(prediction, interpretation, formData) {
         </div>
     `;
     
-    // Mostrar resultado
     resultDiv.classList.remove('hidden');
     resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
 }
@@ -739,7 +712,6 @@ function renderOccurrencesTable() {
             });
         }
         
-        // Classe de prioridade para cor
         const priorityClass = occurrence.Prioridade.toLowerCase();
         
         row.innerHTML = `
