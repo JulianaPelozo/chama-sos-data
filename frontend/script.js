@@ -19,14 +19,12 @@ window.addEventListener('load', function() {
     }, 2000);
 });
 
-// Elementos do DOM
 let currentSection = 'dashboard';
 let occurrencesData = [];
 let currentPage = 1;
 let rowsPerPage = 10;
 let searchTerm = '';
 
-// Inicialização
 document.addEventListener('DOMContentLoaded', function() {
     initializeApp();
     setupEventListeners();
